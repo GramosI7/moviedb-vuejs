@@ -64,7 +64,7 @@ export default {
 a {
   text-decoration: none;
   color: #fff;
-  margin: 20px 0px;
+  margin: 10px 0px;
 }
 .movie {
   width: 250px;

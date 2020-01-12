@@ -29,7 +29,7 @@ export default {
     .content-movie-list {
       margin: 20px 0;
       display: flex;
-      justify-content: space-between;
+      justify-content: space-around;
       flex-wrap: wrap;
     }
   }

@@ -1,7 +1,8 @@
 <template>
   <div class="movieInfo">
     <div class="inner">
-      <div class="info">
+      <div v-if="loading">Loading...</div>
+      <div v-else class="info">
         <iframe
           width="100%"
           height="715"
@@ -43,7 +44,8 @@ export default {
     return {
       movie: {},
       keyVideo: "",
-      poster: ""
+      poster: "",
+      loading: true
     };
   },
   created() {
@@ -65,7 +67,12 @@ export default {
           `https://api.themoviedb.org/3/movie/${this.id}/videos?api_key=6942b7dc7c0044fc880daa8d4c8dd112&language=en-US`
         )
         .then(res => {
-          this.keyVideo = res.data.results[0].key;
+          console.log(res.data);
+          this.keyVideo =
+            res.data.results.length > 0
+              ? res.data.results[0].key
+              : "gkTb9GP9lVI";
+          this.loading = false;
         })
         .catch(err => console.log(err));
     },
