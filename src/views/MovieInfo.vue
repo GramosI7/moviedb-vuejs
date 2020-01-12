@@ -52,7 +52,6 @@ export default {
         `https://api.themoviedb.org/3/movie/${this.id}?api_key=6942b7dc7c0044fc880daa8d4c8dd112&language=en-US`
       )
       .then(res => {
-        console.log(res);
         this.movie = res.data;
         this.getVideo();
         this.getPoster();
@@ -74,7 +73,6 @@ export default {
       axios
         .get(`http://image.tmdb.org/t/p/w185//${this.movie.poster_path}`)
         .then(res => {
-          console.log(res);
           this.poster = res.config.url;
         })
         .catch(err => console.log(err));

@@ -1,9 +1,11 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      You need to see the BO movie ?
-    </p>
+    <div class="inner">
+      <h1>{{ msg }}</h1>
+      <p>
+        You need to see the BO movie ?
+      </p>
+    </div>
   </div>
 </template>
 
@@ -20,6 +22,11 @@ export default {
 <style scoped>
 .hello {
   height: calc(100vh - 100px);
+}
+
+h1,
+p {
+  text-align: center;
 }
 h3 {
   margin: 40px 0 0;

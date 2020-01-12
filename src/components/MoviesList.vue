@@ -1,26 +1,21 @@
 <template>
   <div class="movies-list">
     <div class="inner">
+      <GenreList />
       <div class="content-movie-list">
-        <Movie v-for="movie in movieList" :key="movie.title" :movie="movie" />
+        <Movie v-for="movie in movieList" :key="movie.id" :movie="movie" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { mapState } from "vuex";
-
 import Movie from "./Movie";
+import GenreList from "./GenreList";
 export default {
   name: "moviesList",
-  components: { Movie },
-  computed: {
-    ...mapState(["movieList"])
-  },
-  created() {
-    this.$store.dispatch("getData");
-  }
+  components: { Movie, GenreList },
+  props: ["movieList"]
 };
 </script>
 

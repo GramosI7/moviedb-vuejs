@@ -20,8 +20,14 @@ export default new Vuex.Store({
           "https://api.themoviedb.org/3/discover/movie?api_key=6942b7dc7c0044fc880daa8d4c8dd112&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1"
         )
       ).data;
-      // eslint-disable-next-line no-console
-      console.warn(data);
+      context.commit("setData", data.results);
+    },
+    async getDataGenre(context, payload) {
+      let data = (
+        await axios.get(
+          `https://api.themoviedb.org/3/discover/movie?api_key=6942b7dc7c0044fc880daa8d4c8dd112&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${payload.id}`
+        )
+      ).data;
       context.commit("setData", data.results);
     }
   },
