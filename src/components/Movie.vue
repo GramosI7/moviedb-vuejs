@@ -37,18 +37,30 @@ export default {
   props: ["movie"],
   data() {
     return {
-      loading: true,
+      loading: false,
       poster: ""
     };
   },
   created() {
-    axios
-      .get(`http://image.tmdb.org/t/p/w185//${this.$props.movie.poster_path}`)
-      .then(res => {
-        this.poster = res.config.url;
-      });
+    this.getPoster();
+  },
+  updated() {
+    this.getPoster();
   },
   methods: {
+    getPoster() {
+      console.log(this.loading);
+
+      this.loading = true;
+      axios
+        .get(`http://image.tmdb.org/t/p/w185//${this.$props.movie.poster_path}`)
+        .then(res => {
+          console.log(this.loading);
+          this.poster = res.config.url;
+          this.loading = false;
+          console.log(this.loading);
+        });
+    },
     textTruncate(str, length = 100, ending = "...") {
       if (str.length > length) {
         return str.substring(0, length - ending.length) + ending;

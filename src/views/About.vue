@@ -7,6 +7,8 @@
 
 <style lang="scss" scoped>
 .about {
+  text-align: center;
+  width: 100%;
   height: calc(100vh - 100px);
   img {
     margin: 30px;
